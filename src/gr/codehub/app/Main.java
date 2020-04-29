@@ -1,77 +1,37 @@
 package gr.codehub.app;
 
-import java.util.ArrayList;
-
-
 public class Main {
 
     public static void main(String[] args) {
-        float totalPrice;
-        //method invocation, or method call, method usage
-        totalPrice = calculation(12, 1.3f);
-        System.out.println("Total price = " + totalPrice);
 
-        Product product = new Product("A1","Patates",10,10);
-        Product anotherProduct = new Product("A2", "Oranges",10,10);
-        System.out.println(product.toString());
-        System.out.println(anotherProduct.toString());
+        Ui ui = new Ui();
+        Basket basket = new Basket();
+        int choice;
+       do {
 
-        ArrayList<Product> products = new ArrayList<>();
-        products.add(product);
-        products.add(anotherProduct);
-       // products.add(product);
+           choice = ui.menu();
 
-        float totalProductsPrice = 0;
-        for( Product p : products){
-            totalProductsPrice += p.getPrice() * p.getQuantity();
-        }
-        System.out.println(totalProductsPrice);
+           switch (choice) {
+               case 1:
+                   Product product = ui.createProduct();
+                   basket.add(product);
+                   break;
+               case 2:
 
-        for( Product p : products){
-             System.out.println( " "+ p.getCode());
-         }
-
-        products.remove(0);
-        products.remove(0);
-        System.out.println(products.size());
-
-        for (int i=0;i< products.size(); i++){
-            System.out.println((i+1) + " "+ products.get(i).getPrice());
-        }
-
-        //defensive programming style example
-        int position =3;
-        if (position< products.size())
-        {
-            System.out.println(products.get(position));
-        }
-
-        // run-time error checking example
-        try {
-            System.out.println(products.get(3));
-        }
-        catch(Exception exception){
-            System.out.println("This product does not exist");
-        }
-
-        System.out.println(products);
-
-
-        if (product == anotherProduct) {
-            System.out.println("They are equal");
-        }
-        else {
-            System.out.println("They NOT are equal");
-        }
-
-        if (product.equals(anotherProduct) ) {
-            System.out.println("They are equivalent");
-        }
-        else {
-            System.out.println("They NOT are equivalent");
-        }
-
-        System.out.println(product.hashCode());
+                   break;
+               case 3:
+                   basket.display();
+                   break;
+               case 4:
+                   basket.clearProducts();
+                   break;
+               case 5:
+                   System.out.println("Total Cost: " + basket.getTotalCost());
+               case 0:
+                   return;
+           }
+       }while(choice !=0);
+       
     }
 
 
