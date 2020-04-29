@@ -3,11 +3,14 @@ package gr.codehub.app;
 import java.util.Objects;
 
 public class Product {
+    //Fields
     private String code;
     private String name;
     private float price;
     private int quantity;
 
+
+    //Setters and getters
     public String getCode() {
         return code;
     }
@@ -36,6 +39,10 @@ public class Product {
         this.quantity = quantity;
     }
 
+
+    //Overloading
+
+    //Constructors
     public Product() {
         code = "N.A.";
     }

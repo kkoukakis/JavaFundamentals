@@ -1,7 +1,9 @@
 package gr.codehub.app;
 
 public class Customer {
+
     //fields
+
     private int VAT;
     private int ID;
     private String fullname;
